@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad de Aprendizaje</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F1D62B;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #e0f7fa;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .activity {
+            margin: 40px 0;
+        }
+        .debate-container {
+            margin-bottom: 40px;
+            text-align: left;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .debate-statement {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        .debate-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .user-argument {
+            margin-top: 20px;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .user-argument-input {
+            display: none;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .result {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Actividad de Aprendizaje</h1>
+
+        <!-- Debate Ético -->
+        <div class="activity debate">
+            <h2>Debate Ético: Uso de la fuerza por parte del Estado</h2>
+            <div id="result-debate" class="result"></div>
+            <div id="debate-info">
+                <p>Selecciona tu posición:</p>
+                <div class="debate-options">
+                    <button class="btn" onclick="chooseOptionDebate('pro')">A favor del uso de la fuerza por parte del Estado</button>
+                    <button class="btn" onclick="chooseOptionDebate('contra')">En contra del uso de la fuerza por parte del Estado</button>
+                </div>
+            </div>
+            <div id="user-argument" class="user-argument" role="region" aria-live="polite">
+                <!-- Aquí se mostrará el argumento del usuario -->
+            </div>
+            <div class="user-argument-input">
+                <label for="user-argument-text">Ingresa tu argumento:</label>
+                <textarea id="user-argument-text" rows="4" cols="50"></textarea>
+                <button class="btn" onclick="submitUserArgument()">Enviar Argumento</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para el Debate Ético
+        function chooseOptionDebate(option) {
+            var debateInfo = document.getElementById('debate-info');
+            var userArgument = document.getElementById('user-argument');
+            var userArgumentInput = document.querySelector('.user-argument-input');
+
+            if (option === 'pro') {
+                debateInfo.innerHTML = "<p>Estás a favor del uso de la fuerza por parte del Estado. Proporciona tu argumento a continuación:</p>";
+            } else if (option === 'contra') {
+                debateInfo.innerHTML = "<p>Estás en contra del uso de la fuerza por parte del Estado. Proporciona tu argumento a continuación:</p>";
+            }
+
+            // Muestra el área para que el usuario ingrese su argumento
+            userArgument.innerHTML = "";
+            userArgument.style.display = "none";
+            userArgumentInput.style.display = "block";
+        }
+
+        // Función para enviar el argumento del usuario
+        function submitUserArgument() {
+            var userArgumentText = document.getElementById('user-argument-text').value.trim();
+            var userArgumentContainer = document.getElementById('user-argument');
+
+            if (userArgumentText !== '') {
+                var argumentElement = document.createElement('p');
+                argumentElement.textContent = "Tu argumento: " + userArgumentText;
+                userArgumentContainer.innerHTML = '';
+                userArgumentContainer.appendChild(argumentElement);
+                userArgumentContainer.style.display = "block";
+                document.querySelector('.user-argument-input').style.display = "none";
+            } else {
+                alert("Por favor, ingresa un argumento válido.");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad de Aprendizaje</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F1D62B;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #e0f7fa;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .activity {
+            margin: 40px 0;
+        }
+        .story-container {
+            text-align: left;
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .story-option {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #e0f2f1;
+            border: 1px solid #4caf50;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .story-option:hover {
+            background-color: #c8e6c9;
+        }
+        .result {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Actividad de Aprendizaje</h1>
+
+        <!-- Aventura de Elección Múltiple -->
+        <div class="activity story">
+            <h2>Aventura de Elección Múltiple</h2>
+            <div class="story-container" id="story-container">
+                <div class="story-content" id="story-content">
+                    <p>Estás en un reino donde debes tomar decisiones importantes para mantener la paz y la prosperidad. ¿Qué harás primero?</p>
+                </div>
+                <div class="story-options" id="story-options">
+                    <button class="story-option" onclick="chooseOption('option1')">Fortalecer la democracia.</button>
+                    <button class="story-option" onclick="chooseOption('option2')">Aumentar la seguridad con más fuerzas armadas.</button>
+                </div>
+            </div>
+            <div class="result" id="result-story"></div>
+        </div>
+    </div>
+
+    <script>
+        // Función para la Aventura de Elección Múltiple
+        function chooseOption(option) {
+            const storyContent = document.getElementById('story-content');
+            const storyOptions = document.getElementById('story-options');
+            const resultStory = document.getElementById('result-story');
+
+            if (option === 'option1') {
+                storyContent.innerHTML = "<p>Decides fortalecer la democracia. La gente está feliz y el país prospera. Sin embargo, surgen nuevos desafíos. ¿Qué harás ahora?</p>";
+                storyOptions.innerHTML = '<button class="story-option" onclick="chooseOption(\'option3\')">Promover la participación ciudadana.</button>' +
+                                        '<button class="story-option" onclick="chooseOption(\'option4\')">Implementar nuevas leyes de transparencia.</button>';
+                resultStory.innerHTML = "Has fortalecido la democracia. Los ciudadanos se sienten empoderados y participativos.";
+            } else if (option === 'option2') {
+                storyContent.innerHTML = "<p>Decides aumentar la seguridad. La gente se siente más segura, pero hay un costo en libertades personales. ¿Qué harás ahora?</p>";
+                storyOptions.innerHTML = '<button class="story-option" onclick="chooseOption(\'option5\')">Incrementar la vigilancia.</button>' +
+                                     '<button class="story-option" onclick="chooseOption(\'option6\')">Promover la privacidad digital.</button>';
+                resultStory.innerHTML = "Has aumentado la seguridad con más fuerzas armadas. Los ciudadanos están más protegidos pero se sienten vigilados.";
+            } else if (option === 'option3') {
+                storyContent.innerHTML = "<p>Decides promover la participación ciudadana. Los ciudadanos están más involucrados en la política.</p>";
+                storyOptions.innerHTML = '<button class="story-option" onclick="chooseOption(\'option7\')">Iniciar reformas económicas.</button>' +
+                                        '<button class="story-option" onclick="chooseOption(\'option8\')">Mejorar la educación pública.</button>';
+                resultStory.innerHTML = "La participación ciudadana ha aumentado. Los ciudadanos se sienten más representados.";
+            } else if (option === 'option4') {
+                storyContent.innerHTML = "<p>Decides implementar nuevas leyes de transparencia. El gobierno es más transparente.</p>";
+                storyOptions.innerHTML = '<button class="story-option" onclick="chooseOption(\'option9\')">Combatir la corrupción.</button>' +
+                                        '<button class="story-option" onclick="chooseOption(\'option10\')">Fortalecer la justicia.</button>';
+                resultStory.innerHTML = "Las nuevas leyes de transparencia han mejorado la confianza en el gobierno.";
+            } else if (option === 'option5') {
+                storyContent.innerHTML = "<p>Decides incrementar la vigilancia. La seguridad se refuerza, pero la privacidad se ve comprometida.</p>";
+                storyOptions.innerHTML = '<button class="story-option" onclick="chooseOption(\'option11\')">Regular la vigilancia.</button>' +
+                                        '<button class="story-option" onclick="chooseOption(\'option12\')">Promover derechos individuales.</button>';
+                resultStory.innerHTML = "La vigilancia ha aumentado, mejorando la seguridad pero generando preocupaciones por la privacidad.";
+            } else if (option === 'option6') {
+                storyContent.innerHTML = "<p>Decides promover la privacidad digital. Se protegen más los datos personales, pero hay riesgos de seguridad.</p>";
+                storyOptions.innerHTML = '<button class="story-option" onclick="chooseOption(\'option13\')">Desarrollar políticas de ciberseguridad.</button>' +
+                                        '<button class="story-option" onclick="chooseOption(\'option14\')">Educar sobre el uso responsable de datos.</button>';
+                resultStory.innerHTML = "La privacidad digital se promueve, protegiendo datos personales pero aumentando desafíos en ciberseguridad.";
+            } else if (option === 'option7') {
+                resultStory.innerHTML = "Has iniciado reformas económicas. La economía del reino mejora, creando nuevas oportunidades.";
+            } else if (option === 'option8') {
+                resultStory.innerHTML = "Has mejorado la educación pública. Los ciudadanos tienen acceso a una educación de mayor calidad.";
+            } else if (option === 'option9') {
+                resultStory.innerHTML = "Has combatido la corrupción. La confianza en las instituciones se incrementa.";
+            } else if (option === 'option10') {
+                resultStory.innerHTML = "Has fortalecido el sistema de justicia. Se garantiza un sistema más justo y equitativo.";
+            } else if (option === 'option11') {
+                resultStory.innerHTML = "Has regulado la vigilancia. Se equilibra la seguridad con el respeto a la privacidad.";
+            } else if (option === 'option12') {
+                resultStory.innerHTML = "Has promovido derechos individuales. Se protegen las libertades personales frente a la vigilancia.";
+            } else if (option === 'option13') {
+                resultStory.innerHTML = "Has desarrollado políticas de ciberseguridad. Se fortalece la defensa contra amenazas digitales.";
+            } else if (option === 'option14') {
+                resultStory.innerHTML = "Has educado sobre el uso responsable de datos. Se promueve una cultura de protección de la información.";
+            }
+
+            // Mostrar mensaje al finalizar la aventura
+            if (option === 'option7' || option === 'option8' || option === 'option9' || option === 'option10' || option === 'option11' || option === 'option12' || option === 'option13' || option === 'option14') {
+                resultStory.innerHTML += "<br><strong>¡Has completado la aventura con éxito!</strong>";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad de Aprendizaje</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F1D62B;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+            background-color: #e6f7ff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            text-align: center;
+        }
+        .sopa-de-letras, .quiz, .drag-and-drop {
+            margin: 20px 0;
+        }
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+        td {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #000;
+            text-align: center;
+            font-size: 20px;
+            cursor: pointer;
+            user-select: none;
+        }
+        td.selected {
+            background-color: yellow;
+        }
+        .word-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .word-list li {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+        .quiz-question {
+            margin: 20px 0;
+        }
+        .quiz-options label {
+            display: block;
+            margin: 5px 0;
+        }
+        .drag-and-drop .items, .drag-and-drop .categories {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+        .drag-item, .drop-category {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #000;
+            border-radius: 4px;
+            background-color: #fff;
+        }
+        .drop-category {
+            min-width: 150px;
+            min-height: 50px;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 20px 0;
+            cursor: pointer;
+        }
+        .result {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Actividad de Aprendizaje</h1>
+
+        <!-- Sopa de Letras -->
+        <div class="sopa-de-letras">
+            <h2>Sopa de Letras</h2>
+            <p>Encuentra las siguientes palabras:</p>
+            <ul class="word-list">
+                <li>SOBERANIA</li>
+                <li>ORDEN</li>
+                <li>VIOLENCIA</li>
+                <li>DEMOCRACIA</li>
+                <li>PAZ</li>
+                <li>LIBERALISMO</li>
+                <li>MONARQUISMO</li>
+                <li>PARTIDOS</li>
+                <li>VIRTUD</li>
+                <li>PACTO</li>
+            </ul>
+            <table id="sopa-de-letras">
+                <tr><td>S</td><td>O</td><td>B</td><td>E</td><td>R</td><td>A</td><td>N</td><td>I</td><td>A</td><td>V</td><td>I</td><td>R</td><td>T</td><td>U</td><td>D</td></tr>
+                <tr><td>L</td><td>I</td><td>B</td><td>E</td><td>R</td><td>A</td><td>L</td><td>I</td><td>S</td><td>M</td><td>O</td><td>D</td><td>E</td><td>M</td><td>O</td></tr>
+                <tr><td>M</td><td>O</td><td>N</td><td>A</td><td>R</td><td>Q</td><td>U</td><td>I</td><td>S</td><td>M</td><td>O</td><td>C</td><td>R</td><td>A</td><td>C</td></tr>
+                <tr><td>O</td><td>R</td><td>D</td><td>E</td><td>N</td><td>V</td><td>I</td><td>O</td><td>L</td><td>E</td><td>N</td><td>C</td><td>I</td><td>A</td><td>O</td></tr>
+                <tr><td>V</td><td>I</td><td>O</td><td>L</td><td>E</td><td>N</td><td>C</td><td>I</td><td>A</td><td>P</td><td>A</td><td>Z</td><td>P</td><td>A</td><td>C</td></tr>
+                <tr><td>D</td><td>E</td><td>M</td><td>O</td><td>C</td><td>R</td><td>A</td><td>C</td><td>I</td><td>A</td><td>P</td><td>A</td><td>R</td><td>T</td><td>I</td></tr>
+                <tr><td>P</td><td>A</td><td>Z</td><td>P</td><td>A</td><td>C</td><td>T</td><td>O</td><td>V</td><td>I</td><td>R</td><td>T</td><td>U</td><td>D</td><td>S</td></tr>
+                <tr><td>V</td><td>I</td><td>R</td><td>T</td><td>U</td><td>D</td><td>P</td><td>A</td><td>R</td><td>T</td><td>I</td><td>D</td><td>O</td><td>S</td><td>E</td></tr>
+                <tr><td>O</td><td>A</td><td>R</td><td>T</td><td>I</td><td>D</td><td>O</td><td>S</td><td>M</td><td>O</td><td>N</td><td>A</td><td>R</td><td>Q</td><td>U</td></tr>
+                <tr><td>L</td><td>I</td><td>B</td><td>E</td><td>R</td><td>A</td><td>L</td><td>I</td><td>S</td><td>M</td><td>O</td><td>V</td><td>I</td><td>O</td><td>L</td></tr>
+                <tr><td>I</td><td>N</td><td>S</td><td>T</td><td>I</td><td>T</td><td>U</td><td>C</td><td>I</td><td>O</td><td>N</td><td>S</td><td>I</td><td>S</td><td>T</td></tr>
+                <tr><td>O</td><td>L</td><td>E</td><td>R</td><td>A</td><td>L</td><td>I</td><td>S</td><td>M</td><td>O</td><td>V</td><td>I</td><td>O</td><td>L</td><td>E</td></tr>
+                <tr><td>N</td><td>Q</td><td>U</td><td>I</td><td>S</td><td>T</td><td>I</td><td>S</td><td>M</td><td>O</td><td>V</td><td>I</td><td>O</td><td>L</td><td>E</tr>
+                <tr><td>O</td><td>R</td><td>D</td><td>E</td><td>N</td><td>V</td><td>I</td><td>O</td><td>L</td><td>E</td><td>N</td><td>C</td><td>I</td><td>A</td><td>V</td></tr>
+                <tr><td>L</td><td>I</td><td>B</td><td>E</td><td>R</td><td>A</td><td>L</td><td>I</td><td>S</td><td>M</td><td>O</td><td>D</td><td>E</td><td>M</td><td>O</td></tr>
+            </table>
+        </div>
+
+        <!-- Preguntas de Opción Múltiple -->
+        <div class="quiz">
+            <h2>Preguntas de Opción Múltiple</h2>
+            <div class="quiz-question">
+                <p>1. ¿Quién es conocido como el teórico del Estado moderno?</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q1" value="Weber"> Max Weber</label>
+                    <label><input type="radio" name="q1" value="Marx"> Karl Marx</label>
+                    <label><input type="radio" name="q1" value="Smith"> Adam Smith</label>
+                </div>
+            </div>
+            <div class="quiz-question">
+                <p>2. ¿Cuál es el principal objetivo del Estado según la teoría política clásica?</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q2" value="control civil"> Control civil</label>
+                    <label><input type="radio" name="q2" value="justicia"> Justicia</label>
+                    <label><input type="radio" name="q2" value="poder militar"> Poder militar</label>
+                </div>
+            </div>
+            <div class="quiz-question">
+                <p>3. ¿Qué concepto se asocia más estrechamente con la idea de legitimidad política?</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q3" value="orden"> Orden</label>
+                    <label><input type="radio" name="q3" value="violencia"> Violencia</label>
+                    <label><input type="radio" name="q3" value="anarquía"> Anarquía</label>
+                </div>
+            </div>
+            <div class="quiz-question">
+                <p>4. ¿Qué ideología defiende la libertad individual y los mercados libres?</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q4" value="liberalismo"> Liberalismo</label>
+                    <label><input type="radio" name="q4" value="socialismo"> Socialismo</label>
+                    <label><input type="radio" name="q4" value="conservadurismo"> Conservadurismo</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Arrastrar y Soltar -->
+        <div class="drag-and-drop">
+            <h2>Clasificación de Términos</h2>
+            <p>Arrastra cada término a la categoría correcta:</p>
+            <div class="items">
+                <div class="drag-item" draggable="true" data-category="Sistema Político">Democracia</div>
+                <div class="drag-item" draggable="true" data-category="Ideología">Liberalismo</div>
+                <div class="drag-item" draggable="true" data-category="Institución">Fuerzas Armadas</div>
+                <div class="drag-item" draggable="true" data-category="Concepto">Soberanía</div>
+                <div class="drag-item" draggable="true" data-category="Institución">Policía</div>
+            </div>
+            <div class="categories">
+                <div class="drop-category" data-category="Sistema Político">Sistema Político</div>
+                <div class="drop-category" data-category="Ideología">Ideología</div>
+                <div class="drop-category" data-category="Institución">Institución</div>
+                <div class="drop-category" data-category="Concepto">Concepto</div>
+            </div>
+        </div>
+
+        <!-- Botón de Terminar Actividad -->
+        <button class="btn" onclick="terminarActividad()">Terminar Actividad</button>
+
+        <!-- Resultado -->
+        <div class="result" id="resultado"></div>
+    </div>
+
+    <script>
+        // Sopa de letras
+        const tdElements = document.querySelectorAll('td');
+        let isDragging = false;
+
+        tdElements.forEach(td => {
+            td.addEventListener('mousedown', () => isDragging = true);
+            td.addEventListener('mousemove', () => {
+                if (isDragging) {
+                    td.classList.add('selected');
+                }
+            });
+            td.addEventListener('mouseup', () => isDragging = false);
+        });
+
+        document.body.addEventListener('mouseup', () => isDragging = false);
+
+        // Drag and Drop
+        const dragItems = document.querySelectorAll('.drag-item');
+        const dropCategories = document.querySelectorAll('.drop-category');
+
+        dragItems.forEach(item => {
+            item.addEventListener('dragstart', dragStart);
+        });
+
+        dropCategories.forEach(category => {
+            category.addEventListener('dragover', dragOver);
+            category.addEventListener('drop', drop);
+        });
+
+        function dragStart(event) {
+            event.dataTransfer.setData('text', event.target.textContent);
+            event.dataTransfer.setData('category', event.target.getAttribute('data-category'));
+        }
+
+        function dragOver(event) {
+            event.preventDefault();
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            const data = event.dataTransfer.getData('text');
+            const category = event.dataTransfer.getData('category');
+            if (event.target.getAttribute('data-category') === category) {
+                event.target.textContent += ` ${data}`;
+            }
+        }
+
+        // Terminar Actividad y Calificar
+        function terminarActividad() {
+            let correctAnswers = 0;
+
+            // Preguntas de opción múltiple
+            const quizAnswers = {
+                q1: 'Weber',
+                q2: 'control civil',
+                q3: 'orden',
+                q4: 'liberalismo'
+            };
+
+            for (let question in quizAnswers) {
+                const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+                if (selectedOption && selectedOption.value === quizAnswers[question]) {
+                    correctAnswers++;
+                }
+            }
+
+            // Clasificación de términos (arrastrar y soltar)
+            const correctCategories = {
+                Democracia: 'Sistema Político',
+                Liberalismo: 'Ideología',
+                'Fuerzas Armadas': 'Institución',
+                Soberanía: 'Concepto',
+                Policía: 'Institución'
+            };
+
+            dropCategories.forEach(category => {
+                const categoryName = category.getAttribute('data-category');
+                const items = category.textContent.trim().split(' ');
+                items.forEach(item => {
+                    if (correctCategories[item] === categoryName) {
+                        correctAnswers++;
+                    }
+                });
+            });
+
+            // Mostrar resultado
+            const totalQuestions = Object.keys(quizAnswers).length + Object.keys(correctCategories).length;
+            const score = (correctAnswers / totalQuestions) * 100;
+            const resultDiv = document.getElementById('resultado');
+            resultDiv.textContent = `Tu calificación es: ${score.toFixed(2)}%`;
+        }
+    </script>
+</body>
+</html>

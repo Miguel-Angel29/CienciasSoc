@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad de Aprendizaje</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F1D62B;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #e0f7fa;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .activity {
+            margin: 40px 0;
+        }
+        .drag-and-drop {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .drag-item {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #000;
+            border-radius: 4px;
+            background-color: #fff;
+            cursor: grab;
+        }
+        .drop-category {
+            min-width: 150px;
+            min-height: 50px;
+            border: 2px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 5px;
+            border-radius: 4px;
+            background-color: #f0f0f0;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .result {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Actividad de Aprendizaje</h1>
+
+        <!-- Trivia de Arrastrar y Soltar -->
+        <div class="activity drag-and-drop">
+            <h2>Trivia de Arrastrar y Soltar</h2>
+            <p>Arrastra cada término a la categoría correcta:</p>
+            <div class="items">
+                <div class="drag-item" id="item1" draggable="true" data-category="Concepto" ondragstart="drag(event)">Soberanía</div>
+                <div class="drag-item" id="item2" draggable="true" data-category="Sistema Político" ondragstart="drag(event)">Democracia</div>
+                <div class="drag-item" id="item3" draggable="true" data-category="Ideología" ondragstart="drag(event)">Liberalismo</div>
+                <div class="drag-item" id="item4" draggable="true" data-category="Institución" ondragstart="drag(event)">Partidos</div>
+            </div>
+            <div class="categories">
+                <div class="drop-category" id="category1" data-category="Concepto" ondrop="drop(event)" ondragover="allowDrop(event)">Concepto</div>
+                <div class="drop-category" id="category2" data-category="Sistema Político" ondrop="drop(event)" ondragover="allowDrop(event)">Sistema Político</div>
+                <div class="drop-category" id="category3" data-category="Ideología" ondrop="drop(event)" ondragover="allowDrop(event)">Ideología</div>
+                <div class="drop-category" id="category4" data-category="Institución" ondrop="drop(event)" ondragover="allowDrop(event)">Institución</div>
+            </div>
+            <button class="btn" onclick="checkDragAndDrop()">Validar</button>
+            <div class="result" id="result-dragdrop"></div>
+        </div>
+
+    </div>
+
+    <script>
+                // Función para permitir soltar elementos en las categorías
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        // Función para el evento de arrastrar
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+
+        // Función para el evento de soltar elementos en las categorías
+        function drop(event) {
+            event.preventDefault();
+            var data = event.dataTransfer.getData("text");
+            event.target.appendChild(document.getElementById(data));
+        }
+
+        // Función para verificar la Trivia de Arrastrar y Soltar
+        function checkDragAndDrop() {
+            var categories = document.querySelectorAll('.drop-category');
+            var correct = true;
+
+            categories.forEach(category => {
+                var items = category.querySelectorAll('.drag-item');
+                var categoryType = category.getAttribute('data-category');
+
+                items.forEach(item => {
+                    var itemType = item.getAttribute('data-category');
+
+                    if (itemType !== categoryType) {
+                        correct = false;
+                    }
+                });
+            });
+
+            var resultDragDrop = document.getElementById('result-dragdrop');
+            if (correct) {
+                resultDragDrop.innerHTML = "¡Respuesta correcta!";
+                resultDragDrop.style.color = "#4caf50";
+            } else {
+                resultDragDrop.innerHTML = "Respuesta incorrecta. Intenta nuevamente.";
+                resultDragDrop.style.color = "#f44336";
+            }
+        }
+    </script>
+</body>
+</html>
+

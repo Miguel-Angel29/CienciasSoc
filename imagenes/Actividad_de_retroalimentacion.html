@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad complementaria</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F1D62B;
+            margin: 0;
+            padding: 20px;
+        }
+        .content {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #e6f7ff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .image, .video {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .video input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .bibliography {
+            margin-top: 30px;
+        }
+        .bibliography h4 {
+            margin-bottom: 10px;
+        }
+        .bibliography ol {
+            padding-left: 20px;
+        }
+        .activity {
+            margin-top: 30px;
+        }
+        .activity h2 {
+            margin-bottom: 20px;
+        }
+        .activity ol {
+            padding-left: 20px;
+        }
+        .activity input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .activity button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .activity button:hover {
+            background-color: #0056b3;
+        }
+        .activity .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+        <div class="activity">
+            <h2>Actividad Complementaria</h2>
+            <p>Responde las siguientes preguntas para verificar tu comprensión del tema:</p>
+            <ol>
+                <li>¿Qué es el funcionalismo en sociología y antropología?</li>
+                <input type="text" id="q1">
+                <li>Menciona dos principios del funcionalismo.</li>
+                <input type="text" id="q2">
+                <li>¿Cuál es la función de la familia según el funcionalismo?</li>
+                <input type="text" id="q3">
+                <li>¿Cómo se relaciona la economía con el funcionalismo?</li>
+                <input type="text" id="q4">
+            </ol>
+            <button onclick="checkAnswers()">Verificar Respuestas</button>
+            <div class="result" id="result"></div>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            const answers = [
+                "El funcionalismo es una perspectiva teórica en sociología y antropología que examina cómo las instituciones sociales contribuyen a la estabilidad y funcionamiento de la sociedad en su conjunto.",
+                "Estructura Social y Función y Necesidad",
+                "La familia es fundamental para la socialización primaria, inculcando valores y normas culturales en los niños. También proporciona apoyo emocional y económico a sus miembros.",
+                "La economía organiza la producción, distribución y consumo de bienes y servicios. Proporciona medios de subsistencia y contribuye al bienestar material."
+            ];
+
+            let score = 0;
+            for (let i = 1; i <= 4; i++) {
+                const userAnswer = document.getElementById(`q${i}`).value.trim();
+                if (userAnswer.toLowerCase() === answers[i - 1].toLowerCase()) {
+                    score++;
+                }
+            }
+
+            document.getElementById('result').innerText = `Has obtenido ${score} de 4 respuestas correctas.`;
+        }
+    </script>
+</body>
+</html>
